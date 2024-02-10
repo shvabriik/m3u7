@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background: black;
+    }
+    #imggg {
+      position: absolute;
+      width: 100px;
+      transition: all 0.5s;
+    }
+    #pop {
+      position: absolute;
+      right: 0;
+      color: rgb(223, 240, 255);
+    }
+  </style>
+  <body>
+    <h1 id="pop">rock</h1>
+    <img
+      id="imggg"
+      src="https://w7.pngwing.com/pngs/415/127/png-transparent-white-skull-illustration-8-bit-color-skull-pixel-art-skull-angle-white-text-thumbnail.png"
+    />
+  </body>
+
+  <script>
+    let pop = document.getElementById("pop");
+    let img = document.getElementById("imggg");
+
+    let score = 0;
+    img.addEventListener("click" ,clickImg);
+
+    function clickImg() {
+      score += 1;
+      if (score >=5){
+        img.style.display = "none";
+      }
+      pop.innerHTML = score;
+    }
+
+    function getRand(min,max) {
+      return Math.floor(Math.random()*(max-min)) + min;
+    }
+
+    function moveImg(){
+      let x = getRand(0, 50);
+      let y = getRand(0, 50);
+
+
+      img.style.left = x + "%";
+      img.style.top = y + "%";
+    }
+    setInterval(moveImg,500)
+  </script>
+</html>
